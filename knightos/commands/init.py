@@ -36,7 +36,7 @@ def execute(project_name=None, emulator=None, debugger=None, assembler=None, pla
     template_dir = os.path.join(os.path.dirname(__file__), "..", "templates")
     try:
         with open(os.path.join(template_dir, template, template + ".yaml")) as f:
-            template_yaml = yaml.load(f.read())
+            template_yaml = yaml.load(f.read(), Loader=yaml.SafeLoader)
     except OSError as e:
         print("Template '" + template + "' not found. Stopping.")
         exit(1)
